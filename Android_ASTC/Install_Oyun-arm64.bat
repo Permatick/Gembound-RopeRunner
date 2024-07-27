@@ -15,25 +15,25 @@ for /f "delims=" %%A in ('%ADB% %DEVICE% shell "echo $EXTERNAL_STORAGE"') do @se
 %ADB% %DEVICE% install Oyun-arm64.apk
 @if "%ERRORLEVEL%" NEQ "0" goto Error
 %ADB% %DEVICE% shell pm list packages com.YourCompany.Oyun
-%ADB% %DEVICE% shell pm grant com.YourCompany.Oyun android.permission.FOREGROUND_SERVICE >nul 2>&1
-%ADB% %DEVICE% shell pm grant com.YourCompany.Oyun android.permission.FOREGROUND_SERVICE_DATA_SYNC >nul 2>&1
-%ADB% %DEVICE% shell pm grant com.YourCompany.Oyun android.permission.POST_NOTIFICATIONS >nul 2>&1
+
+
+
 %ADB% %DEVICE% shell rm -r %STORAGE%/UnrealGame/Oyun
 %ADB% %DEVICE% shell rm -r %STORAGE%/UnrealGame/UECommandLine.txt
 %ADB% %DEVICE% shell rm -r %STORAGE%/obb/com.YourCompany.Oyun
 %ADB% %DEVICE% shell rm -r %STORAGE%/Android/obb/com.YourCompany.Oyun
 %ADB% %DEVICE% shell rm -r %STORAGE%/Download/obb/com.YourCompany.Oyun
-@echo.
-@echo Installing new data. Failures here indicate storage problems (missing SD card or bad permissions) and are fatal.
-	%AFS% %DEVICE% -p com.YourCompany.Oyun -k C6AF04A84905F584DA3FD28EC27A2559 push main.1.com.YourCompany.Oyun.obb "^mainobb"
-if "%ERRORLEVEL%" NEQ "0" goto Error
 
 
 
 
 
 
-%AFS% %DEVICE% -p com.YourCompany.Oyun -k C6AF04A84905F584DA3FD28EC27A2559 stop-all
+
+
+
+
+
 
 @echo.
 @echo Grant READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE to the apk for reading OBB file or game file in external storage.
